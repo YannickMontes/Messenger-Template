@@ -161,9 +161,10 @@ Vous trouverez le détail de ce que doit renvoyer chaque route.
 Pour chaque route, en cas d'erreur, la réponse du serveur devra ressembler à ceci:
 ```json
 {
-	"error": ""//L'erreur sous forme de string, ou d'objet. Dans l'idéal sous forme de string.
+	"error": ""
 }
 ```
+L'erreur sous forme de string, ou d'objet. Dans l'idéal sous forme de string.
 
 ### 3.1 Les routes User
 
@@ -180,8 +181,10 @@ Ces routes doivent avoir pour préfixe **"/users/"**.
 Cette route permettra aux utilisateurs de se connecter à notre application. 
 
 _PATH:_ /login
+<br/>
 _METHODE:_ POST
-_BODY:_ 
+<br/>
+_BODY:_
 ```json
 {
 	"username":"username",
@@ -189,6 +192,7 @@ _BODY:_
 }
 ```
 _CODE DE RETOUR POSSIBLES:_ 200, 400, 500
+<br/>
 _REPONSE:_
 ```json
 {
@@ -213,9 +217,13 @@ Cette route permettra de récupérer tout les utilisateurs actuellement connect�
 On considèrera, par simplicité, qu'un client est connecté à l'application à partir du moment où son socket est ouvert avec le serveur.
 
 _PATH:_ /online
+<br/>
 _METHODE:_ GET
+<br/>
 _BODY:_ Aucun
+<br/>
 _CODE DE RETOUR POSSIBLES:_ 200, 401, 500
+<br/>
 _REPONSE:_
 ```json
 {
@@ -247,7 +255,9 @@ Ce token nous permettra de déduire l'identifiant de l'utilisateur.
 </br>
 
 _PATH:_ /
+<br/>
 _METHODE:_ POST
+<br/>
 _BODY:_
 ```json
 {
@@ -259,7 +269,9 @@ _BODY:_
 }
 ```
 _CODE DE RETOUR POSSIBLES:_ 200, 400, 401, 500
+<br/>
 _REPONSE:_
+<br/>
 ```json
 {
 	"conversation":{
@@ -280,9 +292,13 @@ _REPONSE:_
 Cette route récupère toutes les conversations dans lesquelles prends part l'utilisateur à l'origine de la requête. 
 
 _PATH:_ /
+<br/>
 _METHODE:_ GET
+<br/>
 _BODY:_ Aucun
+<br/>
 _CODE DE RETOUR POSSIBLES:_ 200, 400, 401, 500
+<br/>
 _REPONSE:_
 ```json
 {
@@ -309,9 +325,13 @@ _REPONSE:_
 </br>
 
 _PATH:_ /:id
+<br/>
 _METHODE:_ DELETE
+<br/>
 _BODY:_ Aucun
+<br/>
 _CODE DE RETOUR POSSIBLES:_ 200, 400, 401, 404, 500
+<br/>
 _REPONSE:_
 ```json
 {
@@ -331,7 +351,9 @@ _REPONSE:_
 </br>
 
 _PATH:_ /see/:id
+<br/>
 _METHODE:_ POST
+<br/>
 _BODY:_ 
 ```json
 {
@@ -339,6 +361,7 @@ _BODY:_
 }
 ```
 _CODE DE RETOUR POSSIBLES:_ 200, 400, 401, 404, 500
+<br/>
 _REPONSE:_
 ```json
 {
@@ -358,7 +381,9 @@ _REPONSE:_
 </br>
 
 _PATH:_ /:id
+<br/>
 _METHODE:_ POST
+<br/>
 _BODY:_ 
 ```json
 {
@@ -367,6 +392,7 @@ _BODY:_
 }
 ```
 _CODE DE RETOUR POSSIBLES:_ 200, 400, 401, 500
+<br/>
 _REPONSE:_
 ```json
 {
@@ -392,7 +418,9 @@ Ce token nous permettra de déduire l'identifiant de l'utilisateur.
 </br>
 
 _PATH:_ /:id
+<br/>
 _METHODE:_ PUT
+<br/>
 _BODY:_ 
 ```json
 {
@@ -400,6 +428,7 @@ _BODY:_
 }
 ```
 _CODE DE RETOUR POSSIBLES:_ 200, 400, 401, 404, 500
+<br/>
 _REPONSE:_
 ```json
 {
@@ -419,7 +448,9 @@ _REPONSE:_
 </br>
 
 _PATH:_ /:id
+<br/>
 _METHODE:_ POST
+<br/>
 _BODY:_ 
 ```json
 {
@@ -427,6 +458,7 @@ _BODY:_
 }
 ```
 _CODE DE RETOUR POSSIBLES:_ 200, 400, 401, 404, 500
+<br/>
 _REPONSE:_
 ```json
 {
@@ -446,9 +478,13 @@ _REPONSE:_
 </br>
 
 _PATH:_ /:id
+<br/>
 _METHODE:_ DELETE
+<br/>
 _BODY:_ Aucun
+<br/>
 _CODE DE RETOUR POSSIBLES:_ 200, 400, 401, 404, 500
+<br/>
 _REPONSE:_
 ```json
 {
@@ -517,7 +553,9 @@ Pour notifier chaque utilisateur d'un changement dans la base de données, nous 
 <br/>
 
 _KEY:_ @onConnected | @onDisconnected
+<br/>
 _DESTINATION:_ Tout le monde sauf le socket en question
+<br/>
 _BODY:_
 
 ```json
@@ -535,7 +573,9 @@ _BODY:_
 <br/>
 
 _KEY:_ @newConversation | @conversationDeleted | @conversationSeen
+<br/>
 _DESTINATION:_ Les personnes impliquées dans la conversation
+<br/>
 _BODY:_
 
 ```json
@@ -556,7 +596,9 @@ _BODY:_
 <br/>
 
 _KEY:_ @newMessage | @messageEdited | @reactionAdded | @messageDeleted
+<br/>
 _DESTINATION:_ Les personnes impliquées dans la conversation
+<br/>
 _BODY:_
 
 ```json
