@@ -516,7 +516,7 @@ Dans le cas ou le token est fourni, deux possibilités
 
 ### 4.2 Middleware de validation
 
-Vous trouverez dans le fichier [JoiRequestValidator](./JoiRequestValidator.ts) le contenu de base de la classe qui permettra d'implémenter ce middleware. 
+Vous trouverez dans le fichier [JoiRequestValidator](./src/JoiRequestValidator.ts) le contenu de base de la classe qui permettra d'implémenter ce middleware. 
 
 Cette classe contiendra un objet pour chaque route nécéssitant une validation. 
 L'objectif, lors d'une requête, est de vérifier si la route est présente dans notre tableau, et si c'est le cas, valider le format de la requête via ce le validator présent dans l'objet du tableau. 
@@ -623,7 +623,7 @@ _BODY:_
 Nous allons tester les routes de notre application. 
 Pour ce faire, vous trouverez dans le dossier [tests](./src/tests) tout ce qu'il faut. 
 
-Dans le fichier [tests](./src/tests/setupTests.ts), vous trouverez de quoi setup l'environnement de tests.
+Dans le fichier [setupTest.ts](./src/tests/setupTests.ts), vous trouverez de quoi setup l'environnement de tests.
 Nous utiliserons une base de données de test, qui sera différente de notre base de données classique, pour éviter de devoir mock toutes nos fonctions. 
 
 Vous trouverez toutes les instructions dans les fichiers des tests à remplir.
