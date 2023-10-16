@@ -7,7 +7,7 @@ La base de données sera hébergée par **MongoDB**.
 ## Présentation
 
 Nous allons utiliser le client situé dans le dossier client. 
-Prenez le zip, et extrayez le à l'extérieur du dossier contenant le projet.
+Prenez le zip [MessengerClient](./MessengerClient.zip), et extrayez le à l'extérieur du dossier contenant le projet.
 
 Vous allez devoir installer le package serve globalement à votre machine, pour pouvoir lancer le client.
 
