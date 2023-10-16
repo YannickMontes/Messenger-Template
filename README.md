@@ -527,7 +527,7 @@ La fonction **validate(req)** devra retourner un objet vide dans le cas ou le bo
 
 Etant donné que nous sommes dans une application en temps réel, nous avons besoin de socket.io pour conserver un canal de communication bi-directionnel entre le serveur et chaque client. 
 
-Tout le traitement lié au socket se situera dans le fichier [socketController](./socketController.ts).
+Tout le traitement lié au socket se situera dans le fichier [socketController](./src/socketController.ts).
 
 Cette classe permettra d'écouter chaque évèment socket dès que la fonction **connect()** est appelée. 
 Nous récupèrerons l'id de l'utilisateur connecté grâce aux extraHeaders, contenant la clé userid.
@@ -621,13 +621,13 @@ _BODY:_
 ## 6. Les tests
 
 Nous allons tester les routes de notre application. 
-Pour ce faire, vous trouverez dans le dossier [tests](./tests) tout ce qu'il faut. 
+Pour ce faire, vous trouverez dans le dossier [tests](./src/tests) tout ce qu'il faut. 
 
-Dans le fichier [tests](./tests/setupTests.ts), vous trouverez de quoi setup l'environnement de tests.
+Dans le fichier [tests](./src/tests/setupTests.ts), vous trouverez de quoi setup l'environnement de tests.
 Nous utiliserons une base de données de test, qui sera différente de notre base de données classique, pour éviter de devoir mock toutes nos fonctions. 
 
 Vous trouverez toutes les instructions dans les fichiers des tests à remplir.
 
-[ATTENTION](#){.btn .btn-danger} les tests ici présents sont les tests minimum, vous obtiendrez tout les points si vous écrivez des tests supplémentaires.
+Attention les tests ici présents sont les tests minimum, vous obtiendrez tout les points si vous écrivez des tests supplémentaires.
 
 Happy Coding !
