@@ -43,7 +43,7 @@ Vous serez évalué par groupe de **3** maximum.
 La notation du projet se fera sur **100**. 
 **70** points seront répartis sur les features de l'application, et **30** points seront attribuées pour la qualité de votre code. Pensez à soigner votre code, pour qu'il soit lisible, réutilisable, et efficace. 
 
-## 1. Les modèles de données
+## 1. Les modèles de données *(10 pts)*
 
 Avant toute chose, nous allons définir notre modèle de données pour le stockage dans la BDD.
 Nous allons utiliser 3 collections: 
@@ -51,14 +51,14 @@ Nous allons utiliser 3 collections:
 - **Conversation**
 - **Message**. 
 
-### 1.1 Le modèle User
+### 1.1 Le modèle User *(2 pts)*
 
 Un utilisateur sera représenté par plusieurs attributs. Pensez à bien respecter le nom de chaque attribut. 
 - *username*, contenant le nom de l'utilisateur 
 - *password*, contenant le mot de passe (bien entendu stocké crypté)
 - *profilePicId*, contenant un ID de photo récupéré via le fichier pictures.ts
 
-### 1.2 Le modèle Conversation
+### 1.2 Le modèle Conversation *(5 pts)*
 
 Une conversation sera représentée de la manière suivante :
 - *participants*, devra être un tableau des différents participants de la conversation
@@ -69,7 +69,7 @@ Si Sophie, Marc et Alice sont dans une conversation, le titre de cette dernière
 Une conversation est considérée comme modifié lorsqu'un message est ajouté, modifié, supprimé. Les réactions ne modifie pas cette valeur. 
 - *seen*, est un objet ayant une correspondance userId => messageId
 
-### 1.3 Le modèle Message
+### 1.3 Le modèle Message *(3 pts)*
 
 Un message possèdera les attributs suivants: 
 - *conversationId*, pour référencer la conversation dans laquelle se trouve le message
@@ -108,13 +108,13 @@ Un message possèdera les attributs suivants:
 
 ---
 
-## 2. Les controlleurs de la base de données
+## 2. Les controlleurs de la base de données *(10 pts)*
 
 Pour chaque collection, nous allons devoir créer un controlleur de données, qui va nous permettre d'exécuter toutes les actions de communication avec la base. 
 Ce sont les *CRUD* opérations (et plus, si vous avez besoin de requêtes supplémentaires) pour chaque collection.
 Ces controlleurs seront les éléments constituant de notre objet **Database** au sein du code. 
 
-### 2.1 Le controlleur User
+### 2.1 Le controlleur User *(2 pts)*
 
 Ce controleur sera responsable de toutes les actions relatives à la collection **User**. 
 Parmis ces fonctions, vous allez avoir besoin des suivantes: 
@@ -125,7 +125,7 @@ Parmis ces fonctions, vous allez avoir besoin des suivantes:
 
 Et toute autre fonction dont vous pouvez avoir besoin. 
 
-### 2.2 Le controlleur Conversation
+### 2.2 Le controlleur Conversation *(4 pts)*
 
 Ce controleur sera responsable de toutes les actions relatives à la collection **Conversation**. 
 Parmis ces fonctions, vous allez avoir besoin des suivantes: 
@@ -139,7 +139,7 @@ Parmis ces fonctions, vous allez avoir besoin des suivantes:
 
 Et toute autre fonction dont vous pouvez avoir besoin.
 
-### 2.3 Le controlleur Message
+### 2.3 Le controlleur Message *(4 pts)*
 
 Ce controleur sera responsable de toutes les actions relatives à la collection **Message**. 
 Parmis ces fonctions, vous allez avoir besoin des suivantes: 
@@ -153,7 +153,7 @@ Et toute autre fonction dont vous pouvez avoir besoin.
 
 ---
 
-## 3. Les routes HTTP
+## 3. Les routes HTTP *(15 pts)*
 
 Le serveur devra exposer un certain nombre de routes HTTP, afin que le client puisse communiquer avec nous pour agir sur la base de données, et récupérer les infos souhaitées.
 
@@ -166,7 +166,7 @@ Pour chaque route, en cas d'erreur, la réponse du serveur devra ressembler à c
 ```
 L'erreur sous forme de string, ou d'objet. Dans l'idéal sous forme de string.
 
-### 3.1 Les routes User
+### 3.1 Les routes User *(3 pts)*
 
 Nous allons avoir simplement 2 routes pour les utilisateurs.
 Ces routes doivent avoir pour préfixe **"/users/"**. 
@@ -241,7 +241,7 @@ _REPONSE:_
 ```
 </details>
 
-### 3.2 Les routes Conversations
+### 3.2 Les routes Conversations *(7 pts)*
 
 Ces routes doivent avoir pour préfixe **"/conversations/"**.
 Chaque route devra vérifier si l'utilisateur envoie bien un token d'authentification.
@@ -404,7 +404,7 @@ _REPONSE:_
 ```
 </details>
 
-### 3.3 Les routes Messages
+### 3.3 Les routes Messages *(5 pts)*
 
 Ces routes doivent avoir pour préfixe **"/messages/"**.
 Chaque route devra vérifier si l'utilisateur envoie bien un token d'authentification.
@@ -496,13 +496,13 @@ _REPONSE:_
 ```
 </details>
 
-## 4. Les middlewares
+## 4. Les middlewares *(10 pts)*
 
 Nous allons avoir au moins 2 middlewares pour ce projet.
 Le premier sera le middleware d'authentification, responsable de la vérification du token présent dans les requêtes.
 Le second sera un middleware de validation, propulsé par le package joi. Il permettra de valider le format du body de chaque requête.
 
-### 4.1 Middleware d'authentification
+### 4.1 Middleware d'authentification *(4 pts)*
 
 Lors de la connexion d'un utilisateur, nous allons générer un nouveau token, grâce au package **jsonwebtoken** comme vu lors du TD.
 Nous allons encoder un objet json contenant l'id de l'utilisateur dans ce token.
@@ -514,7 +514,7 @@ Dans le cas ou le token est fourni, deux possibilités
 	=> Le token est valide, le middleware passe à la suite.
 	=> Le token n'est pas valide, on retourne le code 401, en stipulant que le token n'est pas autorisé. 
 
-### 4.2 Middleware de validation
+### 4.2 Middleware de validation *(6 pts)*
 
 Vous trouverez dans le fichier [JoiRequestValidator](./src/JoiRequestValidator.ts) le contenu de base de la classe qui permettra d'implémenter ce middleware. 
 
@@ -523,7 +523,7 @@ L'objectif, lors d'une requête, est de vérifier si la route est présente dans
 
 La fonction **validate(req)** devra retourner un objet vide dans le cas ou le body est valide, et un objet avec une clé error (ainsi que le détail) dans le cas inverse.
 
-### 5. Les évènements de socket
+### 5. Les évènements de socket *(15 pts)*
 
 Etant donné que nous sommes dans une application en temps réel, nous avons besoin de socket.io pour conserver un canal de communication bi-directionnel entre le serveur et chaque client. 
 
@@ -547,7 +547,7 @@ Pour notifier chaque utilisateur d'un changement dans la base de données, nous 
 
 <details>
 <summary>
-	5.1 User events
+	5.1 User events <i>(3 pts)</i>
 </summary>
 
 <br/>
@@ -567,7 +567,7 @@ _BODY:_
 
 <details>
 <summary>
-	5.2 Conversations events
+	5.2 Conversations events <i>(6 pts)</i>
 </summary>
 
 <br/>
@@ -590,7 +590,7 @@ _BODY:_
 
 <details>
 <summary>
-	5.3 Messages events
+	5.3 Messages events <i>(6 pts)</i>
 </summary>
 
 <br/>
@@ -618,7 +618,7 @@ _BODY:_
 > Stocker une correspondance *socket => userId* peut être intéréssant.
 ---
 
-## 6. Les tests
+## 6. Les tests *(10 pts)*
 
 Nous allons tester les routes de notre application. 
 Pour ce faire, vous trouverez dans le dossier [tests](./src/tests) tout ce qu'il faut. 
